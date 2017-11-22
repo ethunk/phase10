@@ -1,0 +1,18 @@
+#
+# system 'et get activerecord-migrations'
+# system 'et get activerecord-crud'
+# system 'et get activerecord-associations'
+# system 'et get activerecord-validations'
+# system 'et get user-stories-and-acceptance-criteria'
+
+# system 'et get activerecord-migrations'
+# system 'et get activerecord-crud'
+# system 'et get activerecord-associations'
+# system 'et get ar-queries-and-associations'
+# system 'et get activerecord-validations'
+# system 'et get ar-validations'
+# system 'et get contact-manager'
+# system 'et get migration-marathon'
+# system 'et get user-stories-and-acceptance-criteria'
+# system 'et get tv-shows-sinatra'
+# system 'et get meetups-in-space'
