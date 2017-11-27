@@ -4,3 +4,13 @@
 # Example:
 #
 #   Person.create(first_name: 'Eric', last_name: 'Kelly')
+
+require 'faker'
+
+5.times do
+  Recipe.create(title: Faker::Coffee.blend_name, description: Faker::Coffee.notes)
+end
+
+25.times do
+  Comment.create(recipe_id: Faker::Number.between(1,5), body: Faker::Lorem.paragraph)
+end
