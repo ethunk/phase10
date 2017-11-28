@@ -8,7 +8,7 @@
 require 'faker'
 
 5.times do
-  Recipe.create(title: Faker::Coffee.blend_name, description: Faker::Coffee.notes)
+  Recipe.create(name: Faker::Coffee.blend_name, description: Faker::Coffee.notes)
 end
 
 25.times do

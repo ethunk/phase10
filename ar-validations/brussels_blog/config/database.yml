@@ -2,7 +2,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: brussels_blog_recipes_development
+  database: ar_validations_development
   pool: 5
   username:
   password:
@@ -11,7 +11,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: brussels_blog_recipes_test
+  database: ar_validations_test
   pool: 5
   username:
   password:
@@ -20,7 +20,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: brussels_blog_recipes_production
+  database: ar_validations_production
   pool: 5
   username:
   password:

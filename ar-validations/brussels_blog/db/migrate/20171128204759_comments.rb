@@ -1,7 +1,7 @@
-class CreateComments < ActiveRecord::Migration[5.1]
+class Comments < ActiveRecord::Migration
   def change
     create_table :comments do |table|
-      table.integer :article_id, null: false
+      table.integer :recipe_id, null: false
       table.text :body, null: false
     end
   end
