@@ -7,10 +7,10 @@
 
 require 'faker'
 
-5.times do
-  Recipe.create(name: Faker::Coffee.blend_name, description: Faker::Coffee.notes)
+3.times do
+  Recipe.create(name: ('Brussels Sprouts ' + Faker::Coffee.blend_name), description: Faker::Coffee.notes, serving: Faker::Number.between(1,10))
 end
 
-25.times do
-  Comment.create(recipe_id: Faker::Number.between(1,5), body: Faker::Lorem.paragraph)
+9.times do
+  Comment.create(recipe_id: Faker::Number.between(1,3), body: Faker::Lorem.sentence)
 end
