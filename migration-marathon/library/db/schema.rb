@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202015720) do
+ActiveRecord::Schema.define(version: 20171202154613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,19 +22,19 @@ ActiveRecord::Schema.define(version: 20171202015720) do
     t.decimal "rating"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string  "category"
+    t.integer "book_id"
+  end
+
   create_table "categorizations", force: :cascade do |t|
     t.integer "book_id"
     t.integer "category_id"
   end
 
-  create_table "category", force: :cascade do |t|
-    t.string  "category"
+  create_table "checkouts", force: :cascade do |t|
     t.integer "book_id"
-  end
-
-  create_table "checkout", force: :cascade do |t|
-    t.decimal "price",   precision: 5, scale: 2
-    t.integer "book_id"
+    t.integer "reader_id"
   end
 
   create_table "readers", force: :cascade do |t|

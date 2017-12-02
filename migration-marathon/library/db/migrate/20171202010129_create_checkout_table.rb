@@ -1,7 +1,7 @@
 class CreateCheckoutTable < ActiveRecord::Migration
   def change
     create_table :checkouts do |table|
-      table.decimal :price, precision: 5, scale: 2
+      # table.decimal :price, precision: 5, scale: 2
       table.integer :book_id
     end
   end
