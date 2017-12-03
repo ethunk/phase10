@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'pry'
 
 feature "user views list of TV shows" do
   # As a TV fanatic
@@ -39,6 +40,36 @@ feature "user views list of TV shows" do
   # * If the end year is not provided it should indicate that the show is still
   #   running.
 
-  pending "view details for a TV show"
-  pending "view details for a TV show with missing information"
+  scenario "view details for a TV show" do
+    # First create some sample TV shows
+    game_of_thrones = TelevisionShow.create!({
+        title: "Game of Thrones", network: "HBO",
+        starting_year: 2011, genre: "Fantasy"
+      })
+
+    married_with_children = TelevisionShow.create!({
+        title: "Married... with Children", network: "Fox",
+        starting_year: 1987, ending_year: 1997,
+        genre: "Comedy", synopsis: 'Being married with children is different'
+      })
+    visit "/television_shows"
+    #user clicks on a TV Show
+    click_link('Married... with Children (Fox)')
+    #user is on a page with details
+    #expect page to have the corect information
+    expect(page).to have_content('Network: Fox Years: 1987 - 1997 Genre: Comedy Being married with children is different')
+  end
+
+  scenario "view details for a TV show with missing information" do
+    married_with_children = TelevisionShow.create!({
+        title: "Married... with Children", network: "Fox",
+        starting_year: 1987, genre: "Comedy", synopsis: 'Being married with children is different'
+      })
+      visit '/television_shows'
+      click_link('Married... with Children (Fox)')
+      expect(page).to have_content('Network: Fox Years: 1987 - Genre: Comedy Being married with children is different')
+  end
+
+
+
 end

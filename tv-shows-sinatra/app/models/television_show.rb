@@ -13,4 +13,5 @@ class TelevisionShow < ActiveRecord::Base
   }
 
   validates :synopsis, length: { maximum: 5000 }
+
 end
