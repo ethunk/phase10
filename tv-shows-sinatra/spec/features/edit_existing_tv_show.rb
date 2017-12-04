@@ -20,15 +20,27 @@ feature "user views list of TV shows" do
     #user visits page
     visit "/television_shows"
     #clicks on show to display details
+    click_link('Game of Thrones (HBO)')
     #clicks on edit
+    click_link('Edit Show Details')
+    #redirects to a new page that's specific for editing
+    current_path.include?('edit/').should == true
     #forms are prepopulated with existing information
+    expect(find_field('title').value).to eq 'Game of Thrones'
+    expect(find_field('network').value).to eq 'HBO'
+    expect(find_field('starting_year').value).to eq '2011'
+    expect(find_field('genre').value).to eq 'Fantasy'
     #user changes title to something different
+    fill_in 'title', :with => 'A Song of Ice and Wind'
     #clicks save
+    click_button('Submit', :wait 2)
     #redirected to info page
+    current_path.include?('television_shows/').should == true
     #change persists and information is updated.
+    expect(find_field('title').value).to eq 'A Song of Ice and Wind'
   end
 
-  scenario 'User unsuccessfully attempts to change a title of a show and leave it blank' do
+  xscenario 'User unsuccessfully attempts to change a title of a show and leave it blank' do
     #Create TV Show Data
     game_of_thrones = TelevisionShow.create!({
         title: "Game of Thrones", network: "HBO",
