@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+# must run 'rake db:test:prepare' at some point to make this work...
+
 feature "User signs in" do
   let(:user) do
     User.create(

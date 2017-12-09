@@ -10,6 +10,7 @@ gem 'sinatra-activerecord', '2.0.13'
 gem 'sinatra-flash'
 gem 'faker'
 gem 'orderly'
+gem 'rails-helper'
 
 group :development, :test do
   gem 'capybara'

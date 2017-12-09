@@ -1,3 +1,4 @@
+require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -10,8 +11,17 @@ Meetup.create({
   location: 'Starbucks near Alewife',
   date: 'December 5th, 2017',
   start_time: '6:30pm',
-  end_time: '11:30pm',
+  end_time: '11:30pm'
   })
+
+  Meetup.create({
+    name: 'XOXO Valentines Dance',
+    description: 'Bring a date and your best dance moves',
+    location: 'TD Garden',
+    date: 'February 14th, 2017',
+    start_time: '6:30pm',
+    end_time: '11:30pm'
+    })
 
 Meetup.create({
   name: 'Sweet 16 for Cory',
@@ -19,14 +29,37 @@ Meetup.create({
   location: 'Dave and Busters',
   date: 'December 10th, 2017',
   start_time: '6:30pm',
-  end_time: '11:30pm',
+  end_time: '11:30pm'
   })
 
-Meetup.create({
-  name: 'XOXO Valentines Dance',
-  description: 'Bring a date and your best dance moves',
-  location: 'TD Garden',
-  date: 'February 14th, 2017',
-  start_time: '6:30pm',
-  end_time: '11:30pm',
-  }) 
+
+10.times do
+  temp = Faker::Omniauth.github
+  User.create(
+    provider: temp[:provider],
+    uid: temp[:uid],
+    username: temp[:extra][:raw_info][:login],
+    email: temp[:extra][:raw_info][:email],
+    avatar_url: temp[:extra][:raw_info][:avatar_url]
+  )
+end
+
+15.times do
+  Attendee.create(
+    meetupid: Faker::Number.between(1,3),
+    userid: Faker::Number.between(1,10)
+  )
+end
+
+[1,2,3].each do |id|
+  temp = Attendee.where("meetupid = #{id}")[0]
+  temp.creator = true
+  temp.save
+end
+
+
+# create_table "attendees", force: :cascade do |t|
+#   t.integer "meetupid", null: false
+#   t.integer "userid", null: false
+#   t.boolean "creator", default: false
+# end

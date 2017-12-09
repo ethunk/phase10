@@ -1,0 +1,12 @@
+
+  <table>
+    <tr><h2><%=@meetup.name%></h2></tr>
+    <tr><h3> Location:</h3> <p> <%=@meetup.location%></p></tr>
+    <tr><h3> Description:</h3> <p> <%=@meetup.description%></p></tr>
+    <tr><h3> Date:</h3> <p> <%=@meetup.date%></p></tr>
+    <tr><h3> Start Time:</h3> <p> <%=@meetup.start_time.strftime("%I:%M %p")%></p></tr>
+    <tr><h3> End Time:</h3> <p> <%=@meetup.end_time.strftime("%I:%M %p")%></p></tr>
+    <tr><h3> Creator: <%=@meetup.creator%></h3> <p> <%=@c%></p></tr>
+  </table>
+
+<!-- time.strftime("%I:%M %p") -->

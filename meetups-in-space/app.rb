@@ -33,5 +33,12 @@ get '/sign_out' do
 end
 
 get '/meetups' do
+  @meetups = Meetup.all.order(name: :asc)
   erb :'meetups/index'
+end
+
+get '/meetups/show/:meetup_id' do
+  @meetup = Meetup.where('id = ?', params[:meetup_id])[0]
+
+  erb :'meetups/show'
 end

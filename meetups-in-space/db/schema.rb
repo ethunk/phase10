@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206221923) do
+ActiveRecord::Schema.define(version: 20171209193558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendees", force: :cascade do |t|
-    t.integer "meetupid", null: false
-    t.integer "userid",   null: false
+    t.integer "meetupid",                 null: false
+    t.integer "userid",                   null: false
+    t.boolean "creator",  default: false
   end
 
   create_table "meetups", force: :cascade do |t|
