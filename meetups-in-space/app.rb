@@ -38,7 +38,26 @@ get '/meetups' do
 end
 
 get '/meetups/show/:meetup_id' do
+  session[:confirmation] = nil
   @meetup = Meetup.where('id = ?', params[:meetup_id])[0]
-
   erb :'meetups/show'
+end
+
+get '/new' do
+  session[:confirmation] = nil
+  erb :'meetups/new'
+end
+
+post '/new' do
+  @new_meetup = Meetup.new(params[:meetup])
+  if @new_meetup.valid?
+    @new_meetup.save
+    session[:confirmation] = "You've successfully added the new #{@new_meetup.name} Meetup!"
+    Attendee.create(meetupid: "#{Meetup.last.id}", userid: "#{current_user.id}", creator: true)
+    binding.pry
+    redirect "/meetups/show/#{Meetup.last.id}"
+  else
+    session[:errors] = @new_meetup.errors.messages
+    redirect "/new"
+  end
 end

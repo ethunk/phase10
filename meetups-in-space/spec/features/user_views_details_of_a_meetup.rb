@@ -62,11 +62,11 @@ feature 'user views details of a meetup' do
   # So that I can learn more about its purpose
   # Acceptance Criteria:
   #
-  # [ ] On the index page, the name of each meetup should be a link to the meetup's show page.
-  # [ ] On the show page, I should see the name, description, location, and the creator of the meetup.
+  # [x] On the index page, the name of each meetup should be a link to the meetup's show page.
+  # [x] On the show page, I should see the name, description, location, and the creator of the meetup.
 
 
-  it 'user navigates to homepage and see a list of meetups' do
+  it 'user cliks on meetup from homepage and see details' do
     visit '/'
     click_on("#{Meetup.first.name}")
     id = page.current_path.match(/\d+/)[0]

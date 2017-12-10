@@ -52,9 +52,6 @@ feature 'user views list of meetups' do
         binding.pry
       end
     end
-    # expect(Meetup.all.order(name: :asc).first.name).to appear_before(Meetup.all.order(name: :asc).second.name)
-    # expect(Meetup.all.order(name: :asc).first.name.to appear_before(Meetup.all.order(:name :asc).third.name)
-    # expect(Meetup.all.order(name: :asc).second.name).to appear_before(Meetup.all.order(:name :asc).third.name)
   end
 
 end
