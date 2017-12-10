@@ -3,42 +3,46 @@
   <p class='error_message'> <%=message[0].to_s + " " + message[1][0]%> </p>
   <%end%>
 <%end%>
-<form action="/new" method="post">
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="Name" name="meetup[name]">
-  </div>
 
-  <div>
-    <label for="location">Location:</label>
-    <input type="text" id="location" name="meetup[location]">
-  </div>
+<%if !current_user.nil?%>
+  <form action="/new" method="post">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="meetup[name]">
+    </div>
 
-  <div>
-    <label for="date">Date:</label>
-    <input type="date" id="start_time" name="meetup[date]">
-  </input>
-  </div>
+    <div>
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="meetup[location]">
+    </div>
 
-  <div>
-    <label for="start_time">Start Time:</label>
-    <input type="time" id="start_time" name="meetup[start_time]">
-  </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="meetup[date]">
+    </input>
+    </div>
 
-  <div>
-    <label for="end_time">Ending Year:</label>
-    <input type="time" id="end_time" name="meetup[end_time]">
-  </div>
+    <div>
+      <label for="start_time">Start Time:</label>
+      <input type="time" id="start_time" name="meetup[start_time]">
+    </div>
 
-  <div>
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="meetup[description]">
-  </div>
-  <label for='submit_button'> Submit New Meetup</label>
-  <input type="submit" value="Submit">
-  <div>
-    <input type="hidden" name="username" value=<%=current_user.username%>>
-  </div>
-</form>
+    <div>
+      <label for="end_time">End Time:</label>
+      <input type="time" id="end_time" name="meetup[end_time]">
+    </div>
 
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="meetup[description]">
+    </div>
+    <label for='submit_button'> Submit New Meetup</label>
+    <input type="submit" value="Submit">
+    <div>
+      <input type="hidden" name="username" value=<%=current_user.username%>>
+    </div>
+  </form>
+<%else%>
+  <h4>You must be signed in to add a new meetup</h4>
+<%end%>
 <h4><a href="/meetups">Back to all Meetups</a></h4>

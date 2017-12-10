@@ -33,12 +33,13 @@ get '/sign_out' do
 end
 
 get '/meetups' do
+  session[:errors] =nil
+  session[:confirmation] = nil
   @meetups = Meetup.all.order(name: :asc)
   erb :'meetups/index'
 end
 
 get '/meetups/show/:meetup_id' do
-  session[:confirmation] = nil
   @meetup = Meetup.where('id = ?', params[:meetup_id])[0]
   erb :'meetups/show'
 end
@@ -54,7 +55,7 @@ post '/new' do
     @new_meetup.save
     session[:confirmation] = "You've successfully added the new #{@new_meetup.name} Meetup!"
     Attendee.create(meetupid: "#{Meetup.last.id}", userid: "#{current_user.id}", creator: true)
-    binding.pry
+    session[:confirmation] = "You've succesfully added #{Meetup.last.name}"
     redirect "/meetups/show/#{Meetup.last.id}"
   else
     session[:errors] = @new_meetup.errors.messages

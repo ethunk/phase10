@@ -4,7 +4,6 @@ class Meetup < ActiveRecord::Base
 
   def creator
     meetup_id = self.id
-    binding.pry
     userid = Attendee.where('meetupid = ? AND creator = true ', meetup_id)[0].userid
     return User.where('users.id = ?', userid)[0].username
   end

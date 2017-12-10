@@ -1,3 +1,8 @@
+require 'spec_helper'
+require 'orderly'
+require 'rails-helper'
+require 'faker'
+
 # As a user
 # I want to see who has already joined a meetup
 # So that I can see if any of my friends have joined

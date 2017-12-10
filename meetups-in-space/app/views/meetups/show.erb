@@ -1,6 +1,5 @@
-<%binding.pry%>
-<%if @confirmation.nil? %>
-  <p class='confirmation_message'> <%=@confirmation%> </p>
+<%if !session[:confirmation].nil? %>
+  <p class='confirmation_message'> <%=session[:confirmation]%> </p>
 <%end%>
   <table>
     <tr><h2><%=@meetup.name%></h2></tr>
