@@ -11,4 +11,11 @@
     <tr><h3> Creator: <%=@meetup.creator%></h3></tr>
   </table>
 
+  <table>
+    <tr><h2>User's Attending:</h2></tr>
+    <%@users.each do |user|%>
+    <tr><%=user.avatar%><h3><%=user.username%></h3></tr>
+    <%end%>
+  </table>
+
 <!-- time.strftime("%I:%M %p") -->

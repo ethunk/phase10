@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
       user.avatar_url = auth.info.image
     end
   end
-  has_many :attendees
   has_many :meetups, through: :attendees
+  has_many :attendees 
   validates :username, uniqueness: true, presence: true
 end

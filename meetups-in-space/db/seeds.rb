@@ -46,20 +46,20 @@ end
 
 15.times do
   Attendee.create(
-    meetupid: Faker::Number.between(1,3),
-    userid: Faker::Number.between(1,10)
+    meetup_id: Faker::Number.between(1,3),
+    user_id: Faker::Number.between(1,10)
   )
 end
 
 [1,2,3].each do |id|
-  temp = Attendee.where("meetupid = #{id}")[0]
+  temp = Attendee.where("meetup_id = #{id}")[0]
   temp.creator = true
   temp.save
 end
 
 
 # create_table "attendees", force: :cascade do |t|
-#   t.integer "meetupid", null: false
-#   t.integer "userid", null: false
+#   t.integer "meetup_id", null: false
+#   t.integer "user_id", null: false
 #   t.boolean "creator", default: false
 # end
