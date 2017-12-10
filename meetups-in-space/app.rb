@@ -41,7 +41,7 @@ end
 
 get '/meetups/show/:meetup_id' do
   @meetup = Meetup.where('id = ?', params[:meetup_id])[0]
-  @attendees = @meetup.users
+  @users = @meetup.users
   erb :'meetups/show'
 end
 

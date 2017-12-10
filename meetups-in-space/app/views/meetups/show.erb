@@ -14,7 +14,7 @@
   <table>
     <tr><h2>User's Attending:</h2></tr>
     <%@users.each do |user|%>
-    <tr><%=user.avatar%><h3><%=user.username%></h3></tr>
+    <td><img src='<%=user.avatar_url%>'></img><h3><%=user.username%></h3></td>
     <%end%>
   </table>
 
