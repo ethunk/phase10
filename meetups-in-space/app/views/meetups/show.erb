@@ -1,6 +1,14 @@
 <%if !session[:confirmation].nil? %>
   <p class='confirmation_message'> <%=session[:confirmation]%> </p>
 <%end%>
+<% if !session[:add_to_meetup].nil? %>
+  <div class="message">
+    <div class="container">
+      <%= session[:add_to_meetup] %>
+    </div>
+  </div>
+<% end %>
+
   <table>
     <tr><h2><%=@meetup.name%></h2></tr>
     <tr><h3> Location:</h3> <p> <%=@meetup.location%></p></tr>
@@ -10,7 +18,10 @@
     <tr><h3> End Time:</h3> <p> <%=@meetup.end_time.strftime("%I:%M %p")%></p></tr>
     <tr><h3> Creator: <%=@meetup.creator%></h3></tr>
   </table>
-
+    <form action='./<%=params[:meetup_id]%>' method='post'>
+      <label for='submit_button'><h5>Click to Join</h5></label>
+      <input type="submit" value="Submit">
+    </form>
   <table>
     <tr><h2>User's Attending:</h2></tr>
     <%@users.each do |user|%>

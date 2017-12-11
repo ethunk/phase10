@@ -63,3 +63,14 @@ post '/new' do
     redirect "/new"
   end
 end
+
+post '/meetups/show/:meetup_id' do
+  if session[:user_id].nil?
+    session[:add_to_meetup] = "You must be signed in."
+    redirect "/meetups/show/#{params[:meetup_id]}"
+  else
+    Attendee.create(meetup_id: "#{params[:meetup_id]}", user_id: "params#{session[:user_id]}")
+    session[:add_to_meetup] = "You were sucessfully added"
+    redirect "/meetups/show/#{params[:meetup_id]}"
+  end
+end
