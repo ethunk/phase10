@@ -1,0 +1,10 @@
+<h2>Here is a list of Projects </h2>
+<ul>
+    <li>
+      <h2>PROJECT NAME:<h2><h3><%=@project.name%></h3>
+      <h4>Project Description: <%=@project.description%></h4>
+      <%@members.each do |member|%>
+        <li> <h4>Name: <%=member.first_name%> <%=member.last_name%> </h4></li>
+      <%end%>
+    </li>
+</ul>
