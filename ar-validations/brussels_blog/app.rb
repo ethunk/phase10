@@ -26,7 +26,7 @@ get '/' do
 end
 
 get '/recipes/:id' do
-  @recipe = Recipe.where("id = ?", params[:id])[0]
+  @recipe = Recipe.where("id = ?", params[:id])
   @comments = @recipe.comments
   @title = @recipe.name
   erb :recipelist

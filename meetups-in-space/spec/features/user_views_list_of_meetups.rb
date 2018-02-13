@@ -49,7 +49,6 @@ feature 'user views list of meetups' do
     @meetups.each_with_index do |meetup, index|
       if index < @meetups.size-1
         expect(meetup.name).to appear_before(@meetups[index+1].name)
-        binding.pry
       end
     end
   end
